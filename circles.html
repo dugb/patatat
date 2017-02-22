@@ -167,8 +167,8 @@
 			}
 		};
 		
-
 		var circles = [];
+		
 		function onKeyDown(event) {
 
 			if (keyData[event.key]){
@@ -181,15 +181,24 @@
 				circles.push(newCircle);
 
 			}
-			
-
 		}
+
 		function onFrame(event) {
 			for (var i=0; i < circles.length; i++){
 				circles[i].fillColor.hue +=1;
 				circles[i].scale(.9);
+				//remove circles from array
+				if(circles[i].area < 1){
+	  				circles[i].remove();
+	  				circles.splice(i, 1);
+					}
 			}
 		}
+
+
+
+
+
 	</script>
 </head>
 <body>
